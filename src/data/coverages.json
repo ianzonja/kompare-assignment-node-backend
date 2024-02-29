@@ -1,0 +1,40 @@
+{
+  "coverages": [
+    {
+      "name": "Bonus protection",
+      "description": "12% of the base price",
+      "type": "percentage",
+      "target": "base",
+      "value": 12,
+      "ageMin": null,
+      "ageMax": null
+    },
+    {
+      "name": "AO+",
+      "description": "55 EUR for users younger than 30 years",
+      "type": "price",
+      "target": "base",
+      "value": 55,
+      "ageMin": 0,
+      "ageMax": 29
+    },
+    {
+      "name": "AO+",
+      "description": "105 EUR for users that are 30 years old or older",
+      "type": "price",
+      "target": "base",
+      "value": 105,
+      "ageMin": 30,
+      "ageMax": 999
+    },
+    {
+      "name": "Glass protection",
+      "description": "80% of the vehicle power",
+      "type": "percentage",
+      "target": "vehicle_power",
+      "value": 80,
+      "ageMin": null,
+      "ageMax": null
+    }
+  ]
+}

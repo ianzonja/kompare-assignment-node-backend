@@ -1,0 +1,148 @@
+{
+  "basePrices": [
+    {
+      "city": "Zagreb",
+      "ageMin": 0,
+      "ageMax": 25,
+      "price": 120
+    },
+    {
+      "city": "Zagreb",
+      "ageMin": 26,
+      "ageMax": 40,
+      "price": 130
+    },
+    {
+      "city": "Zagreb",
+      "ageMin": 41,
+      "ageMax": 60,
+      "price": 140
+    },
+    {
+      "city": "Zagreb",
+      "ageMin": 61,
+      "ageMax": 999,
+      "price": 150
+    },
+    {
+      "city": "Split",
+      "ageMin": 0,
+      "ageMax": 25,
+      "price": 110
+    },
+    {
+      "city": "Split",
+      "ageMin": 26,
+      "ageMax": 40,
+      "price": 120
+    },
+    {
+      "city": "Split",
+      "ageMin": 41,
+      "ageMax": 60,
+      "price": 130
+    },
+    {
+      "city": "Split",
+      "ageMin": 61,
+      "ageMax": 999,
+      "price": 140
+    },
+    {
+      "city": "Rijeka",
+      "ageMin": 0,
+      "ageMax": 25,
+      "price": 100
+    },
+    {
+      "city": "Rijeka",
+      "ageMin": 26,
+      "ageMax": 40,
+      "price": 110
+    },
+    {
+      "city": "Rijeka",
+      "ageMin": 41,
+      "ageMax": 60,
+      "price": 120
+    },
+    {
+      "city": "Rijeka",
+      "ageMin": 61,
+      "ageMax": 999,
+      "price": 130
+    },
+    {
+      "city": "Zadar",
+      "ageMin": 0,
+      "ageMax": 25,
+      "price": 100
+    },
+    {
+      "city": "Zadar",
+      "ageMin": 26,
+      "ageMax": 40,
+      "price": 110
+    },
+    {
+      "city": "Zadar",
+      "ageMin": 41,
+      "ageMax": 60,
+      "price": 120
+    },
+    {
+      "city": "Zadar",
+      "ageMin": 61,
+      "ageMax": 999,
+      "price": 130
+    },
+    {
+      "city": "Slavonski Brod",
+      "ageMin": 0,
+      "ageMax": 25,
+      "price": 100
+    },
+    {
+      "city": "Slavonski Brod",
+      "ageMin": 26,
+      "ageMax": 40,
+      "price": 110
+    },
+    {
+      "city": "Slavonski Brod",
+      "ageMin": 41,
+      "ageMax": 60,
+      "price": 120
+    },
+    {
+      "city": "Slavonski Brod",
+      "ageMin": 61,
+      "ageMax": 999,
+      "price": 130
+    },
+    {
+      "city": "Osijek",
+      "ageMin": 0,
+      "ageMax": 25,
+      "price": 100
+    },
+    {
+      "city": "Osijek",
+      "ageMin": 26,
+      "ageMax": 40,
+      "price": 110
+    },
+    {
+      "city": "Osijek",
+      "ageMin": 41,
+      "ageMax": 60,
+      "price": 120
+    },
+    {
+      "city": "Osijek",
+      "ageMin": 61,
+      "ageMax": 999,
+      "price": 130
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "discounts": [
+    {
+      "name": "Commercial discount",
+      "description": "10% on the base price",
+      "type": "percentage",
+      "value": 10,
+      "target": "base",
+      "coveragesMin": null,
+      "vehiclePowerMin": null
+    },
+    {
+      "name": "Adviser discount",
+      "description": "20% on all coverages - if at least 2 coverages are selected",
+      "type": "percentage",
+      "value": 20,
+      "target": "coverage",
+      "coveragesMin": 2,
+      "vehiclePowerMin": null
+    },
+    {
+      "name": "VIP discount",
+      "description": "5% on the total price - show only if vehicle power over 80",
+      "type": "percentage",
+      "value": 5,
+      "target": "total",
+      "coveragesMin": null,
+      "vehiclePowerMin": 80
+    },
+    {
+      "name": "Strong car surcharge",
+      "description": "+ 10% if vehicle power over 100 - applied automatically (can’t be turned off)",
+      "type": "percentage",
+      "value": 10,
+      "target": "total",
+      "coveragesMin": null,
+      "vehiclePowerMin": null
+    },
+    {
+      "name": "Voucher",
+      "description": "a user entered price that discounts the total price",
+      "type": "price",
+      "value": null,
+      "target": "total",
+      "coveragesMin": null,
+      "vehiclePowerMin": null
+    }
+  ]
+}
