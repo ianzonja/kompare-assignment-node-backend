@@ -6,7 +6,7 @@ import cors from 'cors';
 import dotenv from "dotenv";
 dotenv.config();
 
-const port = 8000;
+const port = Number(process.env.PORT) || 8000;
 
 const app = express();
 app.use(cors())
@@ -15,6 +15,6 @@ app.use(router);
 connectToDatabase();
 insertToDB();
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`now listening on port ${port}`);
 });
