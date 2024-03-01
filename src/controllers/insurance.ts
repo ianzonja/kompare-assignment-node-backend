@@ -17,12 +17,8 @@ class InsuranceController {
   static async calculateInsurance(req: Request, res: Response) {
     try {
       if (req.body) {
-        console.log('body postoji')
         const request: CalculateInsuranceRequest = req.body;
-        console.log('request: ', request)
         const dob = new Date(request.birthdate);
-        console.log('dob: ')
-        console.log(dob)
         const insuranceBuilder = new InsuranceBuilder();
         const insurance = await insuranceBuilder.buildInsurance(
           request.name,
@@ -34,8 +30,6 @@ class InsuranceController {
           request.coverages,
           request.discounts,
         );
-        console.log("insurance finally:");
-        console.log(insurance);
         const coverages = [];
         const discounts = [];
         for (const additionalCoverage of insurance.additionalCoverages) {

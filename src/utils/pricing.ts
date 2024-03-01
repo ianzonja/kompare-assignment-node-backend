@@ -12,13 +12,10 @@ export function calculateCoveragePrice(
   if (coverage.name === Coverages.BONUS_PROTECTION) {
     price = insurance.basePrice! * (coverage.value / 100);
   } else if (coverage.name === Coverages.AO) {
-    console.log("eto me tu");
     price = coverage.value;
   } else if (coverage.name === Coverages.GLASS_PROTECTION) {
     price = insurance.vehiclePower! * (coverage.value / 100);
   }
-  console.log("price of additional coverage:");
-  console.log(price);
   return price;
 }
 

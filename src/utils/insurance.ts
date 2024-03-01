@@ -69,30 +69,26 @@ export class InsuranceBuilder implements Builder {
     if (document) {
       basePrice = document.price;
     } else {
-      if (age >= 18 && age <= 25) {
-        basePrice = 90;
-      } else if (age >= 26 && age <= 40) {
-        basePrice = 95;
-      } else if (age >= 41 && age <= 60) {
+      if (age >= 0 && age <= 25) {
         basePrice = 100;
+      } else if (age >= 26 && age <= 40) {
+        basePrice = 130;
+      } else if (age >= 41 && age <= 60) {
+        basePrice = 150;
       } else if (age >= 61 && age <= 999) {
-        basePrice = 105;
+        basePrice = 170;
       }
     }
     this.insurance.basePrice = basePrice;
   }
 
   async setAdditionalCoverages(coverageNames: string[], age: number): Promise<void> {
-    console.log("coverage names:");
-    console.log(coverageNames);
     const finalCoverages: InsuranceCoverage[] = [];
     const additionalCoverages: Coverage[] = [];
     const coverageModel = getCoverageModel();
     const coverages = await coverageModel.find({
       name: coverageNames,
     });
-    console.log("from db:");
-    console.log(coverages);
     for (const coverage of coverages) {
       if (
         typeof coverage.ageMin === "number" &&
@@ -102,23 +98,17 @@ export class InsuranceBuilder implements Builder {
           additionalCoverages.push(coverage);
         }
       } else {
-        console.log("?");
         additionalCoverages.push(coverage);
       }
     }
-    console.log("filtered:");
-    console.log(additionalCoverages);
     for (const additionalCoverage of additionalCoverages) {
       const price = calculateCoveragePrice(additionalCoverage, this.insurance);
       finalCoverages.push({
         coverage: additionalCoverage,
-        price: price,
+        price: Number(price.toFixed(2)),
       });
     }
-    console.log("final coverages");
-    console.log(finalCoverages);
     this.insurance.additionalCoverages = finalCoverages;
-    console.log(this.insurance);
   }
 
   setPriceBeforeDiscounts(): void {
@@ -126,7 +116,7 @@ export class InsuranceBuilder implements Builder {
     for (const coverage of this.insurance.additionalCoverages) {
       price = price + coverage.price;
     }
-    this.insurance.priceBeforeDiscounts = price;
+    this.insurance.priceBeforeDiscounts = Number(price.toFixed(2));
   }
 
   async setDiscounts(discountNames: string[]) {
@@ -139,18 +129,35 @@ export class InsuranceBuilder implements Builder {
       const price = calculateDiscountPrice(discount, this.insurance);
       insuranceDiscounts.push({
         discount: discount,
-        price: price,
+        price: Number(price.toFixed(2)),
       });
     }
     this.insurance.discounts = insuranceDiscounts;
   }
 
   setTotalPrice(): void {
-    let total = this.insurance.priceBeforeDiscounts;
-    for (const discount of this.insurance.discounts) {
-      total = total - discount.price;
+    if (this.insurance.priceMatch > 0) {
+      let basePrice = 0
+      let totalDiscounts = 0
+      let totalCoverages = 0
+      for (const discount of this.insurance.discounts) {
+        totalDiscounts = totalDiscounts + discount.price
+      }
+      for (const coverage of this.insurance.additionalCoverages) {
+        totalCoverages = totalCoverages + coverage.price
+      }
+      basePrice = this.insurance.priceMatch - totalCoverages + totalDiscounts
+      if (this.insurance.voucher > 0) { basePrice = basePrice + this.insurance.voucher }
+      this.insurance.basePrice = basePrice
+      this.insurance.totalPrice = this.insurance.priceMatch
+    } else {
+      let total = this.insurance.priceBeforeDiscounts;
+      for (const discount of this.insurance.discounts) {
+        total = total - discount.price;
+      }
+      if (this.insurance.voucher > 0) { total = total - this.insurance.voucher }
+      this.insurance.totalPrice = Number(total.toFixed(2));
     }
-    this.insurance.totalPrice = total;
   }
 
   async buildInsurance(

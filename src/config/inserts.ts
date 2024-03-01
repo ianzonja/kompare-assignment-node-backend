@@ -8,10 +8,7 @@ import { Discount } from "./../types/discounts";
 
 export async function insertToDB() {
   const baseModel = getBaseModel();
-  console.log(baseModel);
   const countBase = await baseModel.countDocuments();
-  console.log("COUNT BASE:");
-  console.log(countBase);
   if (countBase === 0) {
     const basePrices: BasePrice[] = basePricesData.basePrices;
     await baseModel.create(basePrices);
